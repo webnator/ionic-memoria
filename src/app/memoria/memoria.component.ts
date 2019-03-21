@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-memoria',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./memoria.component.scss'],
 })
 export class MemoriaComponent implements OnInit {
+  @Output() acertado: EventEmitter<boolean> = new EventEmitter<boolean>();
   public valores: Array<number>;
   private seleccionado: number;
   constructor() { 
@@ -20,7 +21,9 @@ export class MemoriaComponent implements OnInit {
       this.seleccionado = valor;
     } else {
       if (this.seleccionado === valor) {
-        alert('Conseguiste el par');
+        this.acertado.emit(true);
+      } else {
+        this.acertado.emit(false);
       }
       this.seleccionado = null;
     }
