@@ -16,11 +16,12 @@ export class MemoriaComponent implements OnInit {
 
   ngOnInit() {}
 
-  public seleccionaValor(valor: number) {
+  public seleccionaValor(index: number) {
     if (this.seleccionado === null) {
-      this.seleccionado = valor;
+      this.seleccionado = index;
     } else {
-      if (this.seleccionado === valor) {
+      if (index === this.seleccionado) { return; }
+      if (this.valores[this.seleccionado] === this.valores[index]) {
         this.acertado.emit(true);
       } else {
         this.acertado.emit(false);
