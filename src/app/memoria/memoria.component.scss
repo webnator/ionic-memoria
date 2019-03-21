@@ -1,8 +1,9 @@
 .tablero {
   ion-col {
-    border: 0.5px solid grey;
-    box-shadow: 3px 3px 11px -1px rgba(0,0,0,0.3);
+    box-shadow: 1.5px 1.5px 3px -1px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    margin: 10px;
+    background-color: #EEE;
     text-align: center;
   }
 }
