@@ -27,6 +27,8 @@ export class HomePage {
       Intentos: ${this.totalIntentos}. 
       Efectividad: ${this.totalAciertos * 100 / this.totalIntentos}%
     `);
+    this.totalAciertos = 0;
+    this.totalIntentos = 0;
   }
 
 }
