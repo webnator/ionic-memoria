@@ -1,75 +1,13 @@
 <div>
   <ion-grid class="tablero">
-    <ion-row>
-      <ion-col (click)="seleccionaValor(0)">
-        <span *ngIf="!esVisible(0)">X</span>
-        <span *ngIf="esVisible(0)">{{ valores[0] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(1)">
-        <span *ngIf="!esVisible(1)">X</span>
-        <span *ngIf="esVisible(1)">{{ valores[1] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(2)">
-        <span *ngIf="!esVisible(2)">X</span>
-        <span *ngIf="esVisible(2)">{{ valores[2] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(3)">
-        <span *ngIf="!esVisible(3)">X</span>
-        <span *ngIf="esVisible(3)">{{ valores[3] }}</span>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col (click)="seleccionaValor(4)">
-        <span *ngIf="!esVisible(4)">X</span>
-        <span *ngIf="esVisible(4)">{{ valores[4] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(5)">
-        <span *ngIf="!esVisible(5)">X</span>
-        <span *ngIf="esVisible(5)">{{ valores[5] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(6)">
-        <span *ngIf="!esVisible(6)">X</span>
-        <span *ngIf="esVisible(6)">{{ valores[6] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(7)">
-        <span *ngIf="!esVisible(7)">X</span>
-        <span *ngIf="esVisible(7)">{{ valores[7] }}</span>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col (click)="seleccionaValor(8)">
-        <span *ngIf="!esVisible(8)">X</span>
-        <span *ngIf="esVisible(8)">{{ valores[8] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(9)">
-        <span *ngIf="!esVisible(9)">X</span>
-        <span *ngIf="esVisible(9)">{{ valores[9] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(10)">
-        <span *ngIf="!esVisible(10)">X</span>
-        <span *ngIf="esVisible(10)">{{ valores[10] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(11)">
-        <span *ngIf="!esVisible(11)">X</span>
-        <span *ngIf="esVisible(11)">{{ valores[11] }}</span>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col (click)="seleccionaValor(12)">
-        <span *ngIf="!esVisible(12)">X</span>
-        <span *ngIf="esVisible(12)">{{ valores[12] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(13)">
-        <span *ngIf="!esVisible(13)">X</span>
-        <span *ngIf="esVisible(13)">{{ valores[13] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(14)">
-        <span *ngIf="!esVisible(14)">X</span>
-        <span *ngIf="esVisible(14)">{{ valores[14] }}</span>
-      </ion-col>
-      <ion-col (click)="seleccionaValor(15)">
-        <span *ngIf="!esVisible(15)">X</span>
-        <span *ngIf="esVisible(15)">{{ valores[15] }}</span>
+    <!-- Obtenemos el indice del ciclo for -->
+    <ion-row *ngFor="let x of filas; let indice_fila = index">
+      <ion-col *ngFor="let y of cols; let indice_col = index" (click)="seleccionaValor((indice_fila * cols.length) + indice_col)">
+        <!-- Multiplicamos el valor de la fila actual por el tamaño de la columna para obtener la posicion actual  -->
+        <span *ngIf="!esVisible((indice_fila * cols.length) + indice_col )">X</span>
+        <span *ngIf="esVisible((indice_fila * cols.length) + indice_col )">
+          {{ valores[(indice_fila * cols.length) + indice_col ] }}
+        </span>
       </ion-col>
     </ion-row>
   </ion-grid>

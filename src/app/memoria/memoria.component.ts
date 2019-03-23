@@ -11,8 +11,13 @@ export class MemoriaComponent implements OnInit {
 
   public valores: Array<number>;
   public aciertos: Array<number>;
+  // Usamos un array para poder utilizar ngFor en el template
+  public filas: Array<number> = new Array(4);
+  public cols: Array<number> = new Array(4);
+
   private parSeleccionado: Array<number> = new Array(2);
   constructor() { 
+    
     this.valores = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8];
     this.aciertos = [];
   }
