@@ -53,21 +53,33 @@ export class MemoriaComponent implements OnInit {
   }
 
   private chequeaAcierto(): void {
-    if (this.valores[this.parSeleccionado[0]] === this.valores[this.parSeleccionado[1]]) {
+    const haAcertado: boolean = this.haAcertado();
+    if (haAcertado) {
       // guardamos los indices de los valores que se han acertado
-      this.aciertos.push(this.parSeleccionado[0]);
-      this.aciertos.push(this.parSeleccionado[1]);
+      this.guardaAciertos();
 
-      this.acertado.emit(true);
       this.compruebaJuegoTerminado();
-      this.parSeleccionado = [];
+      this.limpiaParSeleccionado();
     } else {
-      this.acertado.emit(false);
       // Damos unos segundos antes de limpiar los pares para que el usuario pueda ver el segundo valor
-      setTimeout(() => {
-        this.parSeleccionado = [];
-      }, 1000);
+      this.limpiaParSeleccionado(1000);
     }
+    this.acertado.emit(haAcertado);
+  }
+
+  private haAcertado(): boolean {
+    return this.valores[this.parSeleccionado[0]] === this.valores[this.parSeleccionado[1]];
+  }
+
+  private limpiaParSeleccionado(tiempo: number = 0): void {
+    setTimeout(() => {
+      this.parSeleccionado = [];
+    }, tiempo);
+  }
+
+  private guardaAciertos(): void {
+    this.aciertos.push(this.parSeleccionado[0]);
+    this.aciertos.push(this.parSeleccionado[1]);
   }
 
 }
