@@ -1,9 +1,22 @@
 .tablero {
-  ion-col {
+  .cuadro {
     box-shadow: 1.5px 1.5px 3px -1px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     margin: 10px;
     background-color: #EEE;
     text-align: center;
+
+    // &:after {
+    //   content: "";
+    //   display: block;
+    //   padding-bottom: 80%;
+    // }
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 50%;
+      margin-bottom: 50%;
+    }
   }
 }
