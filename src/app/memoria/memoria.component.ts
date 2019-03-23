@@ -17,18 +17,23 @@ export class MemoriaComponent implements OnInit {
 
   private parSeleccionado: Array<number> = new Array(2);
   constructor() { 
-    
-    this.valores = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8];
-    this.aciertos = [];
+    this.iniciaNuevoJuego();
   }
 
   ngOnInit() {}
+
+  public iniciaNuevoJuego(): void {
+    this.valores = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8];
+    this.aciertos = [];
+  }
 
   public seleccionaValor(index: number): void {
     // Si el numero es visible, no hacemos nada porque:
     // 1. Es el propio numero ya seleccionado antes
     // 2. Ya se acertó
-    if (this.esVisible(index)) { return; }
+    // Si el par está lleno tampoco hacemos nada porque significa que los segundos que 
+    // esperamos para limpiarlos aun no han transcurrido y puede llevar a errores
+    if (this.esVisible(index) || this.parLleno()) { return; }
 
     if (this.parSeleccionado[0] === undefined) {
       this.parSeleccionado[0] = index;
@@ -36,7 +41,7 @@ export class MemoriaComponent implements OnInit {
       this.parSeleccionado[1] = index;
     }
     // Solo compruebo el acierto si ya se ha seleccionado un par
-    if (this.parSeleccionado[0] !== undefined && this.parSeleccionado[1] !== undefined) {
+    if (this.parLleno()) {
       this.chequeaAcierto();
     }
   }
@@ -49,11 +54,16 @@ export class MemoriaComponent implements OnInit {
     return visible;
   }
 
+  private parLleno(): boolean {
+    return this.parSeleccionado[0] !== undefined && this.parSeleccionado[1] !== undefined;
+  }
+
   private compruebaJuegoTerminado(): void {
     // Si el numero de aciertos es igual al numero total de valores. El juego ha terminado
     if (this.aciertos.length === this.valores.length) {
       console.log('Juego terminado');
       this.completado.emit(true);
+      this.iniciaNuevoJuego();
     }
   }
 
@@ -86,5 +96,4 @@ export class MemoriaComponent implements OnInit {
     this.aciertos.push(this.parSeleccionado[0]);
     this.aciertos.push(this.parSeleccionado[1]);
   }
-
 }
