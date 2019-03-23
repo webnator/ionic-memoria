@@ -33,6 +33,7 @@ export class MemoriaComponent implements OnInit {
         this.aciertos.push(index);
 
         this.acertado.emit(true);
+        this.compruebaJuegoTerminado();
       } else {
         this.acertado.emit(false);
       }
@@ -46,6 +47,13 @@ export class MemoriaComponent implements OnInit {
     // Si se ha acertado deberia estar siempre visible
     visible = visible || this.aciertos.includes(index);
     return visible;
+  }
+
+  private compruebaJuegoTerminado(): void {
+    // Si el numero de aciertos es igual al numero total de valores. El juego ha terminado
+    if (this.aciertos.length === this.valores.length) {
+      alert("Juego terminado");
+    }
   }
 
 }
