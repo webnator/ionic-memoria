@@ -21,4 +21,12 @@ export class HomePage {
     this.totalIntentos++;
   }
 
+  public terminaJuego(): void {
+    alert(`Juego terminado. 
+      Aciertos: ${this.totalAciertos}. 
+      Intentos: ${this.totalIntentos}. 
+      Efectividad: ${this.totalAciertos * 100 / this.totalIntentos}%
+    `);
+  }
+
 }

@@ -11,5 +11,5 @@
     Acertados: {{ totalAciertos }} <br/>
     Intentos: {{ totalIntentos }} <br/>
   </div>
-  <app-memoria (acertado)="chequeaAciertos($event)"></app-memoria>
+  <app-memoria (acertado)="chequeaAciertos($event)" (completado)="terminaJuego()"></app-memoria>
 </ion-content>
