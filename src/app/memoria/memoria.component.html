@@ -2,58 +2,74 @@
   <ion-grid class="tablero">
     <ion-row>
       <ion-col (click)="seleccionaValor(0)">
-        {{ valores[0] }}
+        <span *ngIf="seleccionado !== 0">X</span>
+        <span *ngIf="seleccionado === 0">{{ valores[0] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(1)">
-        {{ valores[1] }}
+        <span *ngIf="seleccionado !== 1">X</span>
+        <span *ngIf="seleccionado === 1">{{ valores[1] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(2)">
-        {{ valores[2] }}
+        <span *ngIf="seleccionado !== 2">X</span>
+        <span *ngIf="seleccionado === 2">{{ valores[2] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(3)">
-        {{ valores[3] }}
+        <span *ngIf="seleccionado !== 3">X</span>
+        <span *ngIf="seleccionado === 3">{{ valores[3] }}</span>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col (click)="seleccionaValor(4)">
-        {{ valores[4] }}
+        <span *ngIf="seleccionado !== 4">X</span>
+        <span *ngIf="seleccionado === 4">{{ valores[4] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(5)">
-        {{ valores[5] }}
+        <span *ngIf="seleccionado !== 5">X</span>
+        <span *ngIf="seleccionado === 5">{{ valores[5] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(6)">
-        {{ valores[6] }}
+        <span *ngIf="seleccionado !== 6">X</span>
+        <span *ngIf="seleccionado === 6">{{ valores[6] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(7)">
-        {{ valores[7] }}
+        <span *ngIf="seleccionado !== 7">X</span>
+        <span *ngIf="seleccionado === 7">{{ valores[7] }}</span>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col (click)="seleccionaValor(8)">
-        {{ valores[8] }}
+        <span *ngIf="seleccionado !== 8">X</span>
+        <span *ngIf="seleccionado === 8">{{ valores[8] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(9)">
-        {{ valores[9] }}
+        <span *ngIf="seleccionado !== 9">X</span>
+        <span *ngIf="seleccionado === 9">{{ valores[9] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(10)">
-        {{ valores[10] }}
+        <span *ngIf="seleccionado !== 10">X</span>
+        <span *ngIf="seleccionado === 10">{{ valores[10] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(11)">
-        {{ valores[11] }}
+        <span *ngIf="seleccionado !== 11">X</span>
+        <span *ngIf="seleccionado === 11">{{ valores[11] }}</span>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col (click)="seleccionaValor(12)">
-        {{ valores[12] }}
+        <span *ngIf="seleccionado !== 12">X</span>
+        <span *ngIf="seleccionado === 12">{{ valores[12] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(13)">
-        {{ valores[13] }}
+        <span *ngIf="seleccionado !== 13">X</span>
+        <span *ngIf="seleccionado === 13">{{ valores[13] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(14)">
-        {{ valores[14] }}
+        <span *ngIf="seleccionado !== 14">X</span>
+        <span *ngIf="seleccionado === 14">{{ valores[14] }}</span>
       </ion-col>
       <ion-col (click)="seleccionaValor(15)">
-        {{ valores[15] }}
+        <span *ngIf="seleccionado !== 15">X</span>
+        <span *ngIf="seleccionado === 15">{{ valores[15] }}</span>
       </ion-col>
     </ion-row>
   </ion-grid>

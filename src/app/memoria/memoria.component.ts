@@ -16,7 +16,7 @@ export class MemoriaComponent implements OnInit {
 
   ngOnInit() {}
 
-  public seleccionaValor(index: number) {
+  public seleccionaValor(index: number): void {
     if (this.seleccionado === null) {
       this.seleccionado = index;
     } else {
