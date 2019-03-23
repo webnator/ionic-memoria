@@ -7,6 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class MemoriaComponent implements OnInit {
   @Output() acertado: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() completado: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   public valores: Array<number>;
   public aciertos: Array<number>;
   private seleccionado: number;
@@ -52,7 +54,8 @@ export class MemoriaComponent implements OnInit {
   private compruebaJuegoTerminado(): void {
     // Si el numero de aciertos es igual al numero total de valores. El juego ha terminado
     if (this.aciertos.length === this.valores.length) {
-      alert("Juego terminado");
+      console.log('Juego terminado');
+      this.completado.emit(true);
     }
   }
 
