@@ -14,18 +14,27 @@ export class MemoriaComponent implements OnInit {
   public valores: Array<number>;
   public aciertos: Array<number>;
   // Usamos un array para poder utilizar ngFor en el template
-  public arrFilas: Array<number> = new Array(this.filas);
-  public arrCols: Array<number> = new Array(this.columnas);
+  public arrFilas: Array<number>;
+  public arrCols: Array<number>;
 
   private parSeleccionado: Array<number> = new Array(2);
-  constructor() { 
+  constructor() { }
+
+  ngOnInit() {
     this.iniciaNuevoJuego();
   }
 
-  ngOnInit() {}
-
   public iniciaNuevoJuego(): void {
-    this.valores = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8];
+    this.arrFilas = new Array(this.filas);
+    this.arrCols = new Array(this.columnas);
+    this.valores = [];
+    // Generamos los valores dependiendo del numero total de filas y columnas
+    // Por ejemplo si tenemos 4 filas y 3 columnas (4x3=12), necesitamos 6 parejas de valores (6x2=12)
+    const totalParejas = (this.filas * this.columnas) / 2;
+    for (let i = 0; i < totalParejas; i++) {
+      this.valores.push(i);
+      this.valores.push(i);
+    }
     this.aciertos = [];
   }
 
