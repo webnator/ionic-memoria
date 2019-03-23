@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-memoria',
@@ -6,14 +6,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./memoria.component.scss'],
 })
 export class MemoriaComponent implements OnInit {
+  @Input() filas: number = 4;
+  @Input() columnas: number = 4;
   @Output() acertado: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() completado: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public valores: Array<number>;
   public aciertos: Array<number>;
   // Usamos un array para poder utilizar ngFor en el template
-  public filas: Array<number> = new Array(4);
-  public cols: Array<number> = new Array(4);
+  public arrFilas: Array<number> = new Array(this.filas);
+  public arrCols: Array<number> = new Array(this.columnas);
 
   private parSeleccionado: Array<number> = new Array(2);
   constructor() { 
