@@ -28,17 +28,11 @@ export class MemoriaComponent implements OnInit {
     if (this.parSeleccionado[0] === undefined) {
       this.parSeleccionado[0] = index;
     } else {
-      if (this.valores[this.parSeleccionado[0]] === this.valores[index]) {
-        // guardamos los indices de los valores que se han acertado
-        this.aciertos.push(this.parSeleccionado[0]);
-        this.aciertos.push(index);
-
-        this.acertado.emit(true);
-        this.compruebaJuegoTerminado();
-      } else {
-        this.acertado.emit(false);
-      }
-      this.parSeleccionado = [];
+      this.parSeleccionado[1] = index;
+    }
+    // Solo compruebo el acierto si ya se ha seleccionado un par
+    if (this.parSeleccionado[0] !== undefined && this.parSeleccionado[1] !== undefined) {
+      this.chequeaAcierto();
     }
   }
 
@@ -55,6 +49,24 @@ export class MemoriaComponent implements OnInit {
     if (this.aciertos.length === this.valores.length) {
       console.log('Juego terminado');
       this.completado.emit(true);
+    }
+  }
+
+  private chequeaAcierto(): void {
+    if (this.valores[this.parSeleccionado[0]] === this.valores[this.parSeleccionado[1]]) {
+      // guardamos los indices de los valores que se han acertado
+      this.aciertos.push(this.parSeleccionado[0]);
+      this.aciertos.push(this.parSeleccionado[1]);
+
+      this.acertado.emit(true);
+      this.compruebaJuegoTerminado();
+      this.parSeleccionado = [];
+    } else {
+      this.acertado.emit(false);
+      // Damos unos segundos antes de limpiar los pares para que el usuario pueda ver el segundo valor
+      setTimeout(() => {
+        this.parSeleccionado = [];
+      }, 1000);
     }
   }
 
