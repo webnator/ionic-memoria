@@ -37,7 +37,11 @@ export class MemoriaComponent implements OnInit {
   }
 
   public esVisible(index: number): boolean {
-    return this.seleccionado === index;
+    // Si se ha seleccionado deberia ser visible
+    let visible = this.seleccionado === index;
+    // Si se ha acertado deberia estar siempre visible
+    visible = visible || this.aciertos.includes(index);
+    return visible;
   }
 
 }
