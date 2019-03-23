@@ -19,10 +19,14 @@ export class MemoriaComponent implements OnInit {
   ngOnInit() {}
 
   public seleccionaValor(index: number): void {
+    // Si el numero es visible, no hacemos nada porque:
+    // 1. Es el propio numero ya seleccionado antes
+    // 2. Ya se acertó
+    if (this.esVisible(index)) { return; }
+
     if (this.seleccionado === null) {
       this.seleccionado = index;
     } else {
-      if (index === this.seleccionado) { return; }
       if (this.valores[this.seleccionado] === this.valores[index]) {
         // guardamos los indices de los valores que se han acertado
         this.aciertos.push(this.seleccionado);
