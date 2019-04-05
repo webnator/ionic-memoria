@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { IconService } from './icon.service';
+import { ResultadoTurno } from './resultado-turno';
 
 @Component({
   selector: 'app-memoria',
@@ -9,17 +10,20 @@ import { IconService } from './icon.service';
 export class MemoriaComponent implements OnInit {
   @Input() filas: number = 4;
   @Input() columnas: number = 4;
+  @Input() jugadores: number = 1;
   @Input() prueba: boolean = false;
-  @Output() acertado: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() acertado: EventEmitter<ResultadoTurno> = new EventEmitter<ResultadoTurno>();
   @Output() completado: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public valores: Array<number>;
   public aciertos: Array<number>;
+  private jugadorActual: number;
   // Usamos un array para poder utilizar ngFor en el template
   public arrFilas: Array<number>;
   public arrCols: Array<number>;
 
   private parSeleccionado: Array<number> = new Array(2);
+
   constructor(private iconService: IconService) { }
 
   ngOnInit() {
@@ -27,6 +31,7 @@ export class MemoriaComponent implements OnInit {
   }
 
   public iniciaNuevoJuego(): void {
+    this.jugadorActual = 0;
     this.arrFilas = new Array(this.filas);
     this.arrCols = new Array(this.columnas);
     this.valores = [];
@@ -104,7 +109,8 @@ export class MemoriaComponent implements OnInit {
 
   private chequeaAcierto(): void {
     const haAcertado: boolean = this.haAcertado();
-    this.acertado.emit(haAcertado);
+    // Emite el evento para el jugador
+    this.acertado.emit({ jugador: this.jugadorActual, acierto: haAcertado});
     if (haAcertado) {
       // guardamos los indices de los valores que se han acertado
       this.guardaAciertos();
@@ -112,8 +118,16 @@ export class MemoriaComponent implements OnInit {
       this.compruebaJuegoTerminado();
       this.limpiaParSeleccionado();
     } else {
+      this.rotaJugador();
       // Damos unos segundos antes de limpiar los pares para que el usuario pueda ver el segundo valor
       this.limpiaParSeleccionado(1000);
+    }
+  }
+
+  private rotaJugador() {
+    this.jugadorActual++;
+    if (this.jugadorActual >= this.jugadores) {
+      this.jugadorActual = 0;
     }
   }
 

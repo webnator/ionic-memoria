@@ -7,13 +7,18 @@
 </ion-header>
 
 <ion-content padding>
-  <div>
-    Acertados: {{ totalAciertos }} <br/>
-    Intentos: {{ totalIntentos }} <br/>
-  </div>
+  <ion-row>
+    <ion-col *ngFor="let jugador of jugadores; let numero = index">
+      <h3>Jugador {{ numero + 1 }}</h3>
+      Acertados: {{ jugador.aciertos }} <br/>
+      Intentos: {{ jugador.intentos }} <br/>
+    </ion-col>
+    
+  </ion-row>
   <app-memoria 
     [filas]=2
-    [columnas]=7
+    [columnas]=4
+    [jugadores]="totalJugadores"
     (acertado)="chequeaAciertos($event)" 
     (completado)="terminaJuego()"></app-memoria>
 </ion-content>
