@@ -1,16 +1,19 @@
 .tablero {
   .cuadro {
+    $color-fondo: #EEE;
     box-shadow: 1.5px 1.5px 3px -1px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     margin: 10px;
-    background-color: #EEE;
+    background-color: $color-fondo;
     text-align: center;
 
-    // &:after {
-    //   content: "";
-    //   display: block;
-    //   padding-bottom: 80%;
-    // }
+    &:hover {
+      background-color: darken($color: $color-fondo, $amount: 10);
+    }
+
+    &.seleccionado {
+      background-color: lighten($color: $color-fondo, $amount: 50);
+    }
 
     span {
       display: inline-block;
