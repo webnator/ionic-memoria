@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class MemoriaComponent implements OnInit {
   @Input() filas: number = 4;
   @Input() columnas: number = 4;
+  @Input() prueba: boolean = false;
   @Output() acertado: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() completado: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -28,14 +29,32 @@ export class MemoriaComponent implements OnInit {
     this.arrFilas = new Array(this.filas);
     this.arrCols = new Array(this.columnas);
     this.valores = [];
+    this.generaValores(this.filas, this.columnas);
+    this.aciertos = [];
+  }
+
+  private generaValores(filas: number, columnas: number): void {
     // Generamos los valores dependiendo del numero total de filas y columnas
     // Por ejemplo si tenemos 4 filas y 3 columnas (4x3=12), necesitamos 6 parejas de valores (6x2=12)
-    const totalParejas = (this.filas * this.columnas) / 2;
+    const totalParejas = (filas * columnas) / 2;
     for (let i = 0; i < totalParejas; i++) {
       this.valores.push(i);
       this.valores.push(i);
     }
-    this.aciertos = [];
+    // Si no es una prueba desordeno los valores
+    if (this.prueba === false) {
+      this.valores = this.shuffle(this.valores);
+    }
+  }
+
+  // Obtenido de stackoverflow
+  // https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+  private shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
   }
 
   public seleccionaValor(index: number): void {
