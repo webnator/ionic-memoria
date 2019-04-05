@@ -104,6 +104,7 @@ export class MemoriaComponent implements OnInit {
 
   private chequeaAcierto(): void {
     const haAcertado: boolean = this.haAcertado();
+    this.acertado.emit(haAcertado);
     if (haAcertado) {
       // guardamos los indices de los valores que se han acertado
       this.guardaAciertos();
@@ -114,7 +115,6 @@ export class MemoriaComponent implements OnInit {
       // Damos unos segundos antes de limpiar los pares para que el usuario pueda ver el segundo valor
       this.limpiaParSeleccionado(1000);
     }
-    this.acertado.emit(haAcertado);
   }
 
   private haAcertado(): boolean {
