@@ -7,7 +7,9 @@
           <!-- Multiplicamos el valor de la fila actual por el tamaño de la columna para obtener la posicion actual  -->
           <span *ngIf="!esVisible((indice_fila * arrCols.length) + indice_col )">X</span>
           <span *ngIf="esVisible((indice_fila * arrCols.length) + indice_col )">
-            {{ valores[(indice_fila * arrCols.length) + indice_col ] }}
+            <ion-icon 
+              name="{{ obtieneIconoParaValor(valores[(indice_fila * arrCols.length) + indice_col ]) }}">
+            </ion-icon>
           </span>
         </div>
       </ion-col>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { IconService } from './icon.service';
 
 @Component({
   selector: 'app-memoria',
@@ -19,7 +20,7 @@ export class MemoriaComponent implements OnInit {
   public arrCols: Array<number>;
 
   private parSeleccionado: Array<number> = new Array(2);
-  constructor() { }
+  constructor(private iconService: IconService) { }
 
   ngOnInit() {
     this.iniciaNuevoJuego();
@@ -31,6 +32,10 @@ export class MemoriaComponent implements OnInit {
     this.valores = [];
     this.generaValores(this.filas, this.columnas);
     this.aciertos = [];
+  }
+
+  public obtieneIconoParaValor(index: number): string {
+    return this.iconService.obtieneIcono(index);
   }
 
   private generaValores(filas: number, columnas: number): void {
