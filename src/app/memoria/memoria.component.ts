@@ -14,6 +14,7 @@ export class MemoriaComponent implements OnInit {
   @Input() prueba: boolean = false;
   @Output() acertado: EventEmitter<ResultadoTurno> = new EventEmitter<ResultadoTurno>();
   @Output() completado: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() jugador: EventEmitter<number> = new EventEmitter<number>();
 
   public valores: Array<number>;
   public aciertos: Array<number>;
@@ -129,6 +130,7 @@ export class MemoriaComponent implements OnInit {
     if (this.jugadorActual >= this.jugadores) {
       this.jugadorActual = 0;
     }
+    this.jugador.emit(this.jugadorActual);
   }
 
   private haAcertado(): boolean {

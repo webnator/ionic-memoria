@@ -10,14 +10,16 @@ import { ResultadoJugador } from './resultado-jugador';
 export class HomePage {
   public totalJugadores: number;
   public jugadores: Array<ResultadoJugador> = [];
+  public jugadorActual: number;
 
   constructor() {
-    this.totalJugadores = 2;
+    this.totalJugadores = 4;
     this.inicializaJugadores();
   }
 
   private inicializaJugadores() {
     this.jugadores = [];
+    this.jugadorActual = 0;
     for (let i = 0; i < this.totalJugadores; i++) {
       this.jugadores.push({
         aciertos: 0,
@@ -38,7 +40,11 @@ export class HomePage {
     this.inicializaJugadores();
   }
 
-  private alertaGanador() {
+  public cambiaJugador(index: number): void {
+    this.jugadorActual = index;
+  }
+
+  private alertaGanador(): void {
     const indiceGanador = this.encuentraGanador();
     alert(`Juego terminado. 
       Ganador: Jugador ${indiceGanador + 1}
