@@ -5,7 +5,9 @@
       <ion-col *ngFor="let y of arrCols; let indice_col = index" (click)="seleccionaValor((indice_fila * arrCols.length) + indice_col)">
         <div class="cuadro" [ngClass]="{'seleccionado': esVisible((indice_fila * arrCols.length) + indice_col ) }">
           <!-- Multiplicamos el valor de la fila actual por el tamaño de la columna para obtener la posicion actual  -->
-          <span *ngIf="!esVisible((indice_fila * arrCols.length) + indice_col )">X</span>
+          <span *ngIf="!esVisible((indice_fila * arrCols.length) + indice_col )">
+            <ion-icon name="radio-button-off"></ion-icon>
+          </span>
           <span *ngIf="esVisible((indice_fila * arrCols.length) + indice_col )">
             <ion-icon 
               name="{{ obtieneIconoParaValor(juego.valores[(indice_fila * arrCols.length) + indice_col ]) }}">
