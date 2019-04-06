@@ -9,10 +9,10 @@
 <ion-content padding>
   
   <ion-row>
-    <ion-col *ngFor="let jugador of jugadores; let numero = index">
+    <ion-col *ngFor="let jugador of jugadores">
       <h3>
-        <ion-icon name="star" *ngIf="numero === jugadorActual"></ion-icon>
-        Jugador {{ numero + 1 }}
+        <ion-icon name="star" *ngIf="jugador === jugadorActual"></ion-icon>
+        Jugador {{ jugador.nombre }}
       </h3>
       Acertados: {{ jugador.aciertos }} <br/>
       Intentos: {{ jugador.intentos }} <br/>
