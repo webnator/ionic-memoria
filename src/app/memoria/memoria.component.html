@@ -8,7 +8,7 @@
           <span *ngIf="!esVisible((indice_fila * arrCols.length) + indice_col )">X</span>
           <span *ngIf="esVisible((indice_fila * arrCols.length) + indice_col )">
             <ion-icon 
-              name="{{ obtieneIconoParaValor(valores[(indice_fila * arrCols.length) + indice_col ]) }}">
+              name="{{ obtieneIconoParaValor(juego.valores[(indice_fila * arrCols.length) + indice_col ]) }}">
             </ion-icon>
           </span>
         </div>

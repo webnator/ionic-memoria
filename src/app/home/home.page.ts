@@ -29,6 +29,7 @@ export class HomePage {
   } 
 
   public chequeaAciertos(resultado: ResultadoTurno): void {
+    console.log(resultado);
     if (resultado.acierto) {
       this.jugadores[resultado.jugador].aciertos++;
     }
