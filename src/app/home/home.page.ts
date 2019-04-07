@@ -8,20 +8,21 @@ import { Jugador } from './jugador';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public totalJugadores: number;
   public jugadores: Array<Jugador> = [];
   public jugadorActual: Jugador;
 
   constructor() {
-    this.totalJugadores = 4;
     this.inicializaJugadores();
   }
 
   private inicializaJugadores() {
     this.jugadores = [];
-    for (let i = 0; i < this.totalJugadores; i++) {
-      this.jugadores.push(new Jugador(`${i}`));
-    }
+    
+    this.jugadores.push(new Jugador('Juan'));
+    this.jugadores.push(new Jugador('Maria'));
+    this.jugadores.push(new Jugador('Pedro'));
+    this.jugadores.push(new Jugador('Julia'));
+    
     this.jugadorActual = this.jugadores[0];
   } 
 

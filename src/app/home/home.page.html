@@ -1,28 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Juego memoria
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  
+  <div>
+    <h3>
+      Actual: {{ jugadorActual.nombre }}
+    </h3>
+    Acertados: {{ jugadorActual.aciertos }} <br/>
+    Intentos: {{ jugadorActual.intentos }} <br/>
+  </div>
   <ion-row>
     <ion-col *ngFor="let jugador of jugadores">
-      <h3>
+      <span>
         <ion-icon name="star" *ngIf="jugador === jugadorActual"></ion-icon>
-        Jugador {{ jugador.nombre }}
-      </h3>
-      Acertados: {{ jugador.aciertos }} <br/>
-      Intentos: {{ jugador.intentos }} <br/>
+        {{ jugador.nombre }}
+      </span>
     </ion-col>
-    
   </ion-row>
   <app-memoria 
     [filas]=4
     [columnas]=8
-    [jugadores]="totalJugadores"
+    [jugadores]="jugadores.length"
     (acertado)="chequeaAciertos($event)" 
     (completado)="terminaJuego()"
     (jugador)="cambiaJugador($event)"></app-memoria>
