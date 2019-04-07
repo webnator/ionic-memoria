@@ -1,9 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>inicio</ion-title>
+    <ion-title>Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-row>
+    <ion-item>
+      <ion-label>Añadir jugador:</ion-label>
+      <ion-input #nombreJugador></ion-input>
+      <ion-button (click)="agregaJugador(nombreJugador.value)">Añadir</ion-button>
+    </ion-item>
+  </ion-row>
+  <ion-row *ngFor="let jugador of jugadores">
+    <ion-col>
+      <ion-input [(ngModel)]="jugador"></ion-input>
+    </ion-col>
+  </ion-row>
 </ion-content>
