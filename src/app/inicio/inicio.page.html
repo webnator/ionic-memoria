@@ -9,12 +9,13 @@
     <ion-item>
       <ion-label>Añadir jugador:</ion-label>
       <ion-input #nombreJugador></ion-input>
-      <ion-button (click)="agregaJugador(nombreJugador.value)">Añadir</ion-button>
+      <ion-button (click)="agregaJugador(nombreJugador.value); nombreJugador.value = '';">Añadir</ion-button>
     </ion-item>
   </ion-row>
-  <ion-row *ngFor="let jugador of jugadores">
+  <ion-row *ngFor="let jugador of jugadoresService.jugadores">
     <ion-col>
-      <ion-input [(ngModel)]="jugador"></ion-input>
+      <ion-input [(ngModel)]="jugador.nombre"></ion-input>
     </ion-col>
   </ion-row>
+  <ion-button *ngIf="jugadoresService.jugadores.length" [routerLink]="'/home'">Jugar</ion-button>
 </ion-content>
