@@ -5,11 +5,11 @@ import { JugadoresService } from '../jugadores.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-juego',
+  templateUrl: 'juego.page.html',
+  styleUrls: ['juego.page.scss'],
 })
-export class HomePage {
+export class JuegoPage {
   public jugadores: Array<Jugador> = [];
   public jugadorActual: Jugador;
 
