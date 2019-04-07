@@ -3,7 +3,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="jugadores.length">
   <div>
     <h3>
       Actual: {{ jugadorActual.nombre }}
